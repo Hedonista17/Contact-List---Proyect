@@ -18,19 +18,19 @@ const Home = () => {
    }
   
 
-   useEffect( () => getInitialData (),[])
+   useEffect( () => getInitialData(),[])
 	return (
 		<>
 		<div className="container mt-5">
 		<Bienvenida/>
 		<Link to= "/crear-contacto">
-            <button className="btn btn-dark"> Crear Contacto </button>
+           <span id="botoncrear"> <button  className="btn btn-dark"> Crear Contacto </button></span> 
         </Link>
 		<div className="container mt-5">
-            { store.contactList.map( (contacto) => {
+            { store.contactList.map( (contacto, index) => {
 				return (
 
-               < Contacto nombre ={contacto.full_name}  direccion={contacto.address} telefono={contacto.phone} email={contacto.email} /> 
+               < Contacto  key = {index} nombre ={contacto.full_name}  direccion={contacto.address} telefono={contacto.phone} email={contacto.email} /> 
 
 				)
 			})}

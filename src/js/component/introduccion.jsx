@@ -10,7 +10,7 @@ const Bienvenida = () => {
             <p className="lead">Esto es un simple proyecto realizado con React</p>
             <hr className="my-2" />
 
-            <p> Si deseas saber como funciona, simplemente tienes que hacer <strong>click</strong> en este botón. </p>
+            <p> Si deseas saber como funciona, simplemente tienes que hacer <strong>click</strong> en Crear Contacto. </p>
         </div>
         
    
