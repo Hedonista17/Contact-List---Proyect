@@ -29,7 +29,7 @@ const Home = () => {
 				<Link to="/formulario/crear-contacto">
 					<span id="botoncrear">  <button className="btn btn-dark"> Crear Contacto </button></span>
 				</Link>
-				<div className="container  mt-5">
+				<div id="listado-contactos" className="container mt-5 ">
 				
 					 {store.contactList.map((contacto, index) => {
 						return (

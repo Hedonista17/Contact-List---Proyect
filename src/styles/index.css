@@ -1,32 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-body{
+body {
     font-family: 'Roboto', sans-serif;
+
 }
 
-#botoncrear{ 
+a,a:hover{
+    text-decoration: none;
+    color:rgb(189, 32, 32);
+   
+}
+
+
+#botoncrear {
     display: flex;
     justify-content: center;
-    text-decoration:none;}
+    text-decoration: none;
+}
 
-#Contacto{
-    border-style:  outset;
+#Contacto {
+    border-style: outset;
     padding: 20px;
-    
+    background: rgb(207, 205, 194);
+    background: radial-gradient(circle, #eeddb7 54%, #E9EC9F 100%);
+
 }
 
 
-#imagenContacto{
+#imagenContacto {
     border-radius: 50%;
+    border: 2px solid;
     width: 160px;
     height: 160px;
     object-fit: cover;
-}
-.iconos{
-    display:flex;
 
 }
 
-#footer{
+#nombre-contacto {
+    font-size: 20px;
+}
+
+.iconos {
+    display: flex;
+
+
+}
+
+#listado-contactos {
+    padding-bottom: 100px;
+}
+
+#footer {
     background-color: black;
+
 }
