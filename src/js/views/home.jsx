@@ -10,39 +10,34 @@ import { Context } from '../store/appContext.js';
 const Home = () => {
 
 	const { store, actions } = useContext(Context)
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		const fetchData = async () => {
+		  const data = await getData();
+		  actions.addContactList(data);
+		};
+	
+		fetchData();
+	  }, []);
 
 
-
-	const navigate = useNavigate
-
-	const getInitialData = async () => {
-		const data = await getData()
-		actions.addContactList(data)
-	}
-
-	const handleEdit = () => {
-		actions.editContact(contacto)
-		navigate('/formulario/editar-contacto')
-	}
-
-
-	useEffect(() =>
-	          getInitialData(), [])
 	return (
 		<>
 			<div className="container mt-5">
 				<Bienvenida />
 				<Link to="/formulario/crear-contacto">
-					<span id="botoncrear"> <button className="btn btn-dark"> Crear Contacto </button></span>
+					<span id="botoncrear">  <button className="btn btn-dark"> Crear Contacto </button></span>
 				</Link>
-				<div className="container mt-5">
+				<div className="container  mt-5">
 				
-					{store.contactList.map((contacto, index) => {
+					 {store.contactList.map((contacto, index) => {
 						return (
-							< Contacto key={index} nombre={contacto.full_name} direccion={contacto.address} telefono={contacto.phone} email={contacto.email}
-								onClick={() => deleteContact(contacto)} clickEdit={() => handleEdit(contacto)} />
+							< Contacto key={index} full_name={contacto.full_name} address={contacto.address} phone={contacto.phone} email={contacto.email} id= {contacto.id} />
 						)
 					})}
+					 
+					
 
 				</div>
 			</div>

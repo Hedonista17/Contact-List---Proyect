@@ -43,11 +43,12 @@ export const editContact = async (contact) => {
 }
 
 
-export const deleteContact =async (contact_id) => {
+export const deleteContact = async (contact_id) => {
     
     try{ 
         const response = await fetch(`${URL}${contact_id}`,
-            {method:"DELETE"})
+            {method:"DELETE",
+             headers: HEADERS})
         const data = await response.json()
         return data
 

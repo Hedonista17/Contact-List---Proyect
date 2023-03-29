@@ -22,3 +22,11 @@ body{
     height: 160px;
     object-fit: cover;
 }
+.iconos{
+    display:flex;
+
+}
+
+#footer{
+    background-color: black;
+}

@@ -16,22 +16,26 @@ const initialState = {
 const Crear = () => {
 
     const [contact, setContact] = useState(initialState)
-
-    useEffect( ()=>{
-        if(type === 'editar-contacto'){
-            setContact(store.contacto)
-        }
-    },[])
-
+    const {store,actions} =useContext(Context) 
     const navigate = useNavigate()
-
-    const {store,acctions} =useContext(Context)
-
     const {type} = useParams()
+
+
+    useEffect(() => {
+        async function updateContact() {
+          if(type === 'editar-contacto') {
+            setContact(store.contacto);
+            //console.log("en el use effect del formulario",store.contacto);
+          }
+        }
+        updateContact();
+      }, []);
+
+   
 
     const handleChange = (event) => { //spread operator siempre al setear el estado nuevo objetos o arrays
        setContact({...contact,[event.target.name]: event.target.value})
-       console.log(event.target.value)
+       //console.log(event.target.value)
       
     }
 

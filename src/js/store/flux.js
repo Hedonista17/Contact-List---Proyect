@@ -13,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 			 editContact : (contactoEditado) =>{
 				const store = getStore()
-				setStore({...store, contacto: contactoEditado})
+				setStore({contacto: contactoEditado}) // no hace falta usar el SPREAD operator ya que solo vas a editar uno por tanto almacenas el del momento.
 			 }
 			}
 		}

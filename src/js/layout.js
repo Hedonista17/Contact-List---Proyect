@@ -4,6 +4,7 @@ import  Home  from "./views/home.jsx";
 import Crear from "./views/form-boton.jsx";
 import injectContext from "./store/appContext";
 import  Navbar  from "./component/navbar.jsx";
+import { Footer } from "./component/footer.jsx";
 
 
 //create your first component
@@ -21,6 +22,7 @@ const Layout = () => {
 						<Route path="/formulario/:type" element={< Crear/>} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
+					<Footer/>
 			</BrowserRouter>
 		</div>
 	);
