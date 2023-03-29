@@ -1,7 +1,8 @@
-import React, { useState} from 'react';
-import { createNewContact } from '../services';
-import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
+import React, { useState,useContext,useEffect} from 'react';
+import { createNewContact,editContact } from '../services';
+import { useNavigate,useParams } from 'react-router';
+import { Link} from 'react-router-dom';
+import { Context } from '../store/appContext';
 
 const initialState = {
     full_name: "",
@@ -11,10 +12,22 @@ const initialState = {
     phone: "",
 }
 
+
 const Crear = () => {
 
     const [contact, setContact] = useState(initialState)
+
+    useEffect( ()=>{
+        if(type === 'editar-contacto'){
+            setContact(store.contacto)
+        }
+    },[])
+
     const navigate = useNavigate()
+
+    const {store,acctions} =useContext(Context)
+
+    const {type} = useParams()
 
     const handleChange = (event) => { //spread operator siempre al setear el estado nuevo objetos o arrays
        setContact({...contact,[event.target.name]: event.target.value})
@@ -24,7 +37,7 @@ const Crear = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-       await  createNewContact(contact)
+        type === 'editar-contacto' ? await editContact(contact) : await createNewContact(contact);
         navigate('/')
     }
 
@@ -37,11 +50,7 @@ const Crear = () => {
                     <Link to="/"> <span title="Volver al Inicio"><i className="fa-solid fa-xmark fa-2xl mx-5 mt-4" ></i></span></Link>
                     
                       </div>
-                   
-
-                
-                     
-                                    
+                           
                         <div className="p-2 mb-3">
                             <label className="formulario"> Nombre  </label>
                             <input   defaultValue={contact.full_name} name="full_name" type="text" className="form-control" placeholder="Introduzca su nombre completo" required />

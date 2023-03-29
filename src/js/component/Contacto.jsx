@@ -17,8 +17,8 @@ const Contacto = (props) => {
         <p><i class="fa-solid fa-at fa-lg mx-3"></i> {props.email}</p>
       </div>
       <div className="col-lg-2 d-flex">
-      <i class="fa-solid fa-user-pen fa-xl mt-3 mx-4"></i>
-      <i class="fa-regular fa-trash-can  fa-xl mt-3 mx-4"></i>
+      <i class="fa-solid fa-user-pen fa-xl mt-3 mx-4" onClick={props.clickEdit}></i>
+      <i class="fa-regular fa-trash-can  fa-xl mt-3 mx-4" onClick={props.onClick}></i>
       </div>
     </div>
   </div>);
