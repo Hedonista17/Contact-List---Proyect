@@ -8,11 +8,16 @@ import {deleteContact} from "../services/index.js"
 const Contacto = (props) => {
 
   const { store, actions } = useContext(Context)
-  const [showModal, setShowModal] = useState(false);
+  const [ID, setID] = useState({"id":""});
+
   const navigate = useNavigate()
 
-  const handleClick = () => {
-    setShowModal(true);
+  const handleClick =  () => {
+    const data = {"id":props.id}
+     setID(data)
+    console.log("las props del handleclick", props.id)
+    console.log(ID)
+   
   }
   
   const handleEdit = () => {
@@ -20,8 +25,11 @@ const Contacto = (props) => {
     navigate('/formulario/editar-contacto')
   }
   const handleDelete = async () => {
-    await deleteContact(props.id);
-    location.reload()
+     
+      await deleteContact(ID);
+      setID("")
+    console.log("Los props del delete", ID)
+    //location.reload()
   }
   
 
@@ -41,7 +49,7 @@ const Contacto = (props) => {
       <div className="col-lg-2 d-flex">
       <i className="fa-solid fa-user-pen fa-xl mt-3 mx-4" title="Editar Contacto" onClick={handleEdit}></i>
       <i className="fa-regular fa-trash-can  fa-xl mt-3 mx-4" title="Borrar Contacto" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick= {handleClick}></i>
-      {showModal}
+      
       </div>
       <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
