@@ -8,28 +8,22 @@ import {deleteContact} from "../services/index.js"
 const Contacto = (props) => {
 
   const { store, actions } = useContext(Context)
-  const [ID, setID] = useState({"id":""});
-
+ 
   const navigate = useNavigate()
 
-  const handleClick =  () => {
-    const data = {"id":props.id}
-     setID(data)
-    console.log("las props del handleclick", props.id)
-    console.log(ID)
-   
-  }
+
+  const handleId = () => {
+    actions.saveId(props.id); 
+  };
   
   const handleEdit = () => {
    actions.editContact(props) //los props de abajo
     navigate('/formulario/editar-contacto')
   }
-  const handleDelete = async () => {
-     
-      await deleteContact(ID);
-      setID("")
-    console.log("Los props del delete", ID)
-    //location.reload()
+  const handleDelete = async  () => {
+   await  deleteContact(store.id);
+     actions.saveId("");
+     location.reload()
   }
   
 
@@ -48,7 +42,7 @@ const Contacto = (props) => {
       </div>
       <div className="col-lg-2 d-flex">
       <i className="fa-solid fa-user-pen fa-xl mt-3 mx-4" title="Editar Contacto" onClick={handleEdit}></i>
-      <i className="fa-regular fa-trash-can  fa-xl mt-3 mx-4" title="Borrar Contacto" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick= {handleClick}></i>
+      <i className="fa-regular fa-trash-can  fa-xl mt-3 mx-4" title="Borrar Contacto" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick= {handleId}></i>
       
       </div>
       <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -63,7 +57,7 @@ const Contacto = (props) => {
                         </div>
                         <div className="modal-footer">
                             <button title="Cancelar" type="button" className="btn btn-dark" data-bs-dismiss="modal"> Cancelar</button>
-                            <button type="button" className="btn btn-danger" onClick={() => handleDelete( props.id)} >Borrar Contacto</button>
+                            <button type="button" className="btn btn-danger" onClick={handleDelete} >Borrar Contacto</button>
                         </div>
                     </div>
                 </div>
